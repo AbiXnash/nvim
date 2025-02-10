@@ -38,3 +38,5 @@ vim.opt.swapfile = false -- creates a swapfile
 vim.opt.hlsearch = true -- highlight all matches in search
 vim.opt.ignorecase = true -- ignore case in search
 vim.opt.smartcase = true -- match case if explicitly stated
+
+vim.api.nvim_set_keymap("n", "<leader>r", ":w<CR>:!javac % && java %:r<CR>", { noremap = true, silent = true })
