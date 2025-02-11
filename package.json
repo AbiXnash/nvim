@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@angular/language-service": "^19.1.5",
+    "eslint": "^9.20.1",
+    "eslint_d": "^14.3.0",
+    "prettier": "^3.5.0",
+    "typescript-language-server": "^4.3.3"
+  }
+}
