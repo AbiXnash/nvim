@@ -57,15 +57,60 @@ return {
 					end,
 					desc = "Close buffer from tabline",
 				},
-				-- Java Run Keybinding (opens in a terminal)
-				["<Leader>r"] = {
+				-- Run Java File in a terminal
+
+				["<Leader>rj"] = {
 					function()
-						vim.cmd "w" -- Save file
-						vim.cmd "split | terminal javac % && java %:r" -- Open a new terminal and run Java
+						vim.cmd "w" -- Save the file before running
+
+						local filepath = vim.fn.expand "%:p" -- Full file path
+						local filename = vim.fn.expand "%:t:r" -- File name without extension
+						local filedir = vim.fn.expand "%:h" -- Directory containing the file
+
+						-- Read the package name (if any)
+						local package_name = nil
+						local file = io.open(filepath, "r")
+						if file then
+							for line in file:lines() do
+								package_name = line:match "^%s*package%s+([%w%.]+)%s*;" -- Extract package name
+								if package_name then break end
+							end
+							file:close()
+						end
+
+						-- If a package is found, compile with the correct directory structure
+						local classpath_option = package_name and "-d " .. filedir or ""
+						local run_class = package_name and package_name .. "." .. filename or filename
+
+						-- Run Java program in terminal
+						vim.cmd(
+							"split | terminal cd "
+								.. filedir
+								.. " && javac "
+								.. classpath_option
+								.. " "
+								.. filepath
+								.. " && java -cp "
+								.. filedir
+								.. " "
+								.. run_class
+						)
 					end,
-					desc = "Compile & Run Java in terminal",
+					desc = "Compile & Run Java",
 				},
 
+				["<Leader>rp"] = {
+					function()
+						vim.cmd "w" -- Save file
+
+						local filepath = vim.fn.expand "%:p" -- Full path of the current file
+						local filedir = vim.fn.expand "%:h" -- Directory of the file
+
+						-- Open a terminal and run the Python script
+						vim.cmd("split | terminal cd " .. filedir .. " && python3 " .. filepath)
+					end,
+					desc = "Run Python in terminal",
+				},
 				-- tables with just a `desc` key will be registered with which-key if it's installed
 				-- this is useful for naming menus
 				-- ["<Leader>b"] = { desc = "Buffers" },
