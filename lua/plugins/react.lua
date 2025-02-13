@@ -25,10 +25,4 @@ return {
 			}
 		end,
 	},
-
-	-- Auto-completions and snippets
-	{ "windwp/nvim-ts-autotag", config = true }, -- Auto-close JSX/TSX tags
-	{ "hrsh7th/nvim-cmp" },
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "L3MON4D3/LuaSnip" },
 }

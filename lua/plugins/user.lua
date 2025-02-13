@@ -110,6 +110,11 @@ return {
 		config = function() vim.cmd "colorscheme fleet" end,
 	},
 
+	{
+		"windwp/nvim-ts-autotag",
+		event = "VeryLazy",
+		config = function() require("nvim-ts-autotag").setup() end,
+	},
 	-- You can disable default plugins as follows:
 	{ "max397574/better-escape.nvim", enabled = false },
 
