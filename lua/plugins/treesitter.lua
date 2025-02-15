@@ -12,10 +12,12 @@ return {
 			"javascript",
 			"html",
 			"css",
+			"python",
 			"json",
 			"markdown",
 			"markdown_inline",
 			"gitignore",
+			"typescript",
 			-- add more arguments for adding more treesitter parsers
 		},
 

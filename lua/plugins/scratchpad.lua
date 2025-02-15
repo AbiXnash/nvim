@@ -11,17 +11,27 @@ return {
 	end,
 	keys = {
 		{
-			"<Leader>es",
+			"<Leader>s",
+			"<cmd>Scratch Pad<cr>",
+		},
+		{
+			"<Leader>ss",
 			function()
 				local scratchpad = require "scratchpad"
 				scratchpad.ui:new_scratchpad()
 			end,
-			desc = "show scratch pad",
-
-			vim.keymap.set({ "n", "v" }, "<leader>ps", function()
+			desc = "Show scratch pad",
+		},
+		{
+			"<Leader>sp",
+			function()
 				local scratchpad = require "scratchpad"
 				scratchpad.ui:sync()
-			end, { desc = "Push selection / current line to scratchpad" }),
+			end,
+			desc = "Push selection / current line to scratchpad",
+			mode = { "n", "v" }, -- Specify that this works in normal & visual mode
 		},
+
+		desc = "Push selection / current line to scratchpad",
 	},
 }

@@ -58,7 +58,9 @@ return {
 					desc = "Close buffer from tabline",
 				},
 				-- Run Java File in a terminal
-
+				["<Leader>r"] = {
+					desc = "Run Program",
+				},
 				["<Leader>rj"] = {
 					function()
 						vim.cmd "w" -- Save the file before running
