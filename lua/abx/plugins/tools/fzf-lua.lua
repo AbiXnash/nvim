@@ -7,6 +7,10 @@ return {
   ---@module "fzf-lua"
   ---@type fzf-lua.Config|{}
   ---@diagnostic disable: missing-fields
-  opts = {}
+  opts = {},
   ---@diagnostic enable: missing-fields
+  config = function()
+    require("fzf-lua").setup({})
+    require("fzf-lua").register_ui_select()
+  end,
 }
