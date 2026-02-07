@@ -41,10 +41,6 @@ local function setup_keymaps()
     vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Find diagnostics" })
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find help tags" })
     vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Find recent files" })
-
-    vim.keymap.set("n", "<leader>e", function()
-        require("telescope").extensions.file_browser.file_browser()
-    end, { desc = "File browser" })
 end
 
 return {

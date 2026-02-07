@@ -2,6 +2,12 @@
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
+-- =============================================================================
+-- Leader Keys (must be set before mappings)
+-- =============================================================================
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local lazyrepo = "https://github.com/folke/lazy.nvim.git"
     local ok, _ = vim.fn.system({
@@ -40,4 +46,3 @@ require("lazy").setup({
     checker = { enabled = false },
     change_detection = { notify = false },
 })
-

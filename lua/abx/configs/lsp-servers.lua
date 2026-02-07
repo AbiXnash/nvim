@@ -1,7 +1,3 @@
-vim.lsp.enable({
-	"lua_ls",
-})
-
 local border = {
 	{ "┌", "FloatBorder" },
 	{ "─", "FloatBorder" },
