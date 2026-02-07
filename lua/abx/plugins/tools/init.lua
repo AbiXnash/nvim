@@ -16,7 +16,7 @@ return {
     -- { import = "abx.plugins.tools.formatters" },
 
     -- LSP base plugins (lspconfig, nvim-lspconfig)
-    -- { import = "abx.plugins.tools.lsp" },
+    { import = "abx.plugins.tools.lsp" },
 
     -- LSP package manager (mason)
     { import = "abx.plugins.tools.mason" },
@@ -38,4 +38,7 @@ return {
 
     -- Quick file navigation (harpoon2)
     { import = "abx.plugins.tools.harpoon" },
+    --
+    -- FZF Lua
+    { import = "abx.plugins.tools.fzf-lua" },
 }

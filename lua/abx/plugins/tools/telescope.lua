@@ -9,17 +9,18 @@ local function telescope_setup()
 
     telescope.setup({
         defaults = {
-            layout_strategy = "horizontal",
+            layout_strategy = "vertical",
             layout_config = {
-                horizontal = {
-                    preview_width = 1,
-                    preview_cutoff = 0,
-                    prompt_position = "top",
-                },
                 width = 0.95,
-                height = 0.90,
-                preview_height = 0.45, -- makes it feel like bottom pane
+                height = 0.95,
+
+                vertical = {
+                    prompt_position = "top",
+                    preview_height = 0.55, -- preview at bottom
+                    preview_cutoff = 0,
+                },
             },
+
             file_ignore_patterns = { "node_modules", ".git/", "target", "build" },
             path_display = { "smart" },
             sorting_strategy = "ascending",

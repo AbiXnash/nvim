@@ -27,8 +27,8 @@ vim.opt.rtp:prepend(lazypath)
 -- =============================================================================
 -- Load Core Configurations
 -- =============================================================================
-require("abx.configs")
 require("abx.keymaps")
+require("abx.configs")
 
 -- =============================================================================
 -- Initialize Plugin Manager
@@ -40,3 +40,4 @@ require("lazy").setup({
     checker = { enabled = false },
     change_detection = { notify = false },
 })
+
