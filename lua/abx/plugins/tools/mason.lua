@@ -17,23 +17,22 @@ return {
             require("mason-tool-installer").setup({
                 ensure_installed = {
                     -- go
-                    -- "gopls", -- temporarily disabled
+                    "gopls",
                     "gofumpt",
                     "golangci-lint",
                     "delve",
 
                     -- web (typescript/javascript/html/css/yaml/json)
                     "vtsls",
-                    "typescript-language-server",
                     "prettierd",
                     "eslint_d",
                     "html-lsp",
-                    "yaml-language-server",
-                    "json-lsp",
+                    -- "yaml-language-server",
+                    -- "json-lsp",
 
                     -- frameworks
-                    "svelte-language-server",
-                    "astro-language-server",
+                    -- "svelte-language-server",
+                    -- "astro-language-server",
 
                     -- python
                     "basedpyright",
@@ -45,8 +44,8 @@ return {
                     "stylua",
 
                     -- rust
-                    "rust-analyzer",
-                    "rustfmt",
+                    -- "rust-analyzer",
+                    -- "rustfmt",
 
                     -- java
                     "jdtls",
