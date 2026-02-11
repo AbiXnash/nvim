@@ -6,7 +6,8 @@
 local enabled_servers = {
 	"lua_ls",
 	"gopls",
-	"vtsls"
+	"vtsls",
+	"rust_analyzer"
 }
 
 return {

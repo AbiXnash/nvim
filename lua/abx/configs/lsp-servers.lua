@@ -14,7 +14,7 @@ vim.diagnostic.config({
 	-- Select either virtual lines or text below otherwise it gets messy
 	-- virtual_text = {
 	-- 	spacing = 4,
-	-- 	prefix = "●", - This is fine as a string
+	-- 	prefix = "●", --This is fine as a string
 	-- },
 
 	underline = true,
@@ -41,11 +41,11 @@ vim.diagnostic.config({
 -- define common keybindings
 
 local key_mappings = {
-	{ "gr", "<cmd>FzfLua lsp_references<CR>", "Show LSP references" },
-	{ "gD", "<cmd>FzfLua lsp_declarations<CR>", "Go to declaration" },
-	{ "gd", "<cmd>FzfLua lsp_definitions<CR>", "Show LSP definitions" },
+	{ "gr", "<cmd>FzfLua lsp_references<CR>",      "Show LSP references" },
+	{ "gD", "<cmd>FzfLua lsp_declarations<CR>",    "Go to declaration" },
+	{ "gd", "<cmd>FzfLua lsp_definitions<CR>",     "Show LSP definitions" },
 	{ "gi", "<cmd>FzfLua lsp_implementations<CR>", "Show LSP implementations" },
-	{ "gt", "<cmd>FzfLua lsp_typedefs<CR>", "Show LSP type definitions" },
+	{ "gt", "<cmd>FzfLua lsp_typedefs<CR>",        "Show LSP type definitions" },
 	{
 		"<leader>ca",
 		function()
@@ -53,8 +53,8 @@ local key_mappings = {
 		end,
 		"Code actions",
 	},
-	{ "<leader>rn", vim.lsp.buf.rename, "Smart rename" },
-	{ "<leader>D", "<cmd>FzfLua lsp_document_diagnostics<CR>", "Show buffer diagnostics" },
+	{ "<leader>rn", vim.lsp.buf.rename,                         "Smart rename" },
+	{ "<leader>D",  "<cmd>FzfLua lsp_document_diagnostics<CR>", "Show buffer diagnostics" },
 	{
 		"<leader>d",
 		function()
