@@ -29,7 +29,7 @@ return {
                     strings = {},
                     variables = {},
                     numbers = {},
-                    booleans = {},
+                    booleans = { "bold" },
                     properties = {},
                     types = {},
                     operators = {},
@@ -133,7 +133,7 @@ return {
                 },
             })
 
-            vim.cmd.colorscheme "catppuccin"
+            -- vim.cmd.colorscheme "catppuccin"
 
             vim.api.nvim_create_autocmd("ColorScheme", {
                 pattern = "catppuccin",
@@ -144,4 +144,123 @@ return {
             })
         end,
     },
+    {
+        "ellisonleao/gruvbox.nvim",
+        priority = 99999,
+        config = function()
+            local function apply_gruvbox_overrides()
+                local hl = vim.api.nvim_set_hl
+
+                -- make main UI transparent
+                hl(0, "Normal", { bg = "NONE" })
+                hl(0, "NormalFloat", { bg = "NONE" })
+                hl(0, "SignColumn", { bg = "NONE" })
+                hl(0, "EndOfBuffer", { bg = "NONE" })
+
+                -- STATUSLINE (this is the missing part)
+                hl(0, "StatusLine", { bg = "NONE" })
+                hl(0, "StatusLineNC", { bg = "NONE" })
+                hl(0, "WinBar", { bg = "NONE" })
+                hl(0, "WinBarNC", { bg = "NONE" })
+
+                -- tabline
+                hl(0, "TabLineFill", { bg = "NONE" })
+
+                -- popup menu / cmp / blink
+                hl(0, "Pmenu", { bg = "NONE" })
+                hl(0, "FloatBorder", { bg = "NONE" })
+
+                -- blink.nvim specific
+                hl(0, "BlinkCmpMenu", { bg = "NONE" })
+                hl(0, "BlinkCmpDoc", { bg = "NONE" })
+                hl(0, "BlinkCmpSignatureHelp", { bg = "NONE" })
+            end
+
+            require("gruvbox").setup({
+                terminal_colors = false, -- add neovim terminal colors
+                undercurl = false,
+                bold = false,
+                italic = {
+                    strings = false,
+                    emphasis = true,
+                    comments = true,
+                    operators = false,
+                    folds = false,
+                },
+                contrast = "hard", -- can be "hard", "soft" or empty string
+                transparent_mode = true,
+            })
+            -- vim.cmd("colorscheme gruvbox")
+
+            apply_gruvbox_overrides()
+
+            vim.api.nvim_create_autocmd("ColorScheme", {
+                pattern = "gruvbox",
+                callback = apply_gruvbox_overrides,
+            })
+        end
+    },
+
+    {
+        'sainnhe/gruvbox-material',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.g.gruvbox_material_enable_italic = true
+            vim.g.gruvbox_material_transparent_background = 2
+            vim.g.gruvbox_material_dim_inactive_windows = 0
+            vim.g.gruvbox_material_float_style = "blend"
+            vim.g.gruvbox_material_background = "hard"
+            vim.g.gruvbox_material_foreground = "material"
+
+            local function apply_gruvbox_material_overrides()
+                local hl = vim.api.nvim_set_hl
+
+                -- make main UI transparent
+                hl(0, "Normal", { bg = "NONE" })
+                hl(0, "NormalFloat", { bg = "NONE" })
+                hl(0, "SignColumn", { bg = "NONE" })
+                hl(0, "EndOfBuffer", { bg = "NONE" })
+
+                -- statusline / winbar / tabline
+                hl(0, "StatusLine", { bg = "NONE" })
+                hl(0, "StatusLineNC", { bg = "NONE" })
+                hl(0, "WinBar", { bg = "NONE" })
+                hl(0, "WinBarNC", { bg = "NONE" })
+                hl(0, "TabLineFill", { bg = "NONE" })
+
+                -- popup menu / cmp / blink
+                hl(0, "Pmenu", { bg = "NONE" })
+                hl(0, "FloatBorder", { bg = "NONE" })
+                hl(0, "BlinkCmpMenu", { bg = "NONE" })
+                hl(0, "BlinkCmpDoc", { bg = "NONE" })
+                hl(0, "BlinkCmpSignatureHelp", { bg = "NONE" })
+            end
+
+            vim.cmd.colorscheme('gruvbox-material')
+            apply_gruvbox_material_overrides()
+
+            vim.api.nvim_create_autocmd("ColorScheme", {
+                pattern = "gruvbox-material",
+                callback = apply_gruvbox_material_overrides,
+            })
+        end
+    },
+    {
+        "ramojus/mellifluous.nvim",
+        -- version = "v0.*", -- uncomment for stable config (some features might be missed if/when v1 comes out)
+        config = function()
+            require("mellifluous").setup({
+                transparent_background = {
+                    enabled = true,
+                    floating_windows = true,
+                    telescope = true,
+                    file_tree = true,
+                    cursor_line = true,
+                    status_line = true,
+                },
+            })
+            -- vim.cmd("colorscheme mellifluous")
+        end,
+    }
 }
