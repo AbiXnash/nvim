@@ -2,7 +2,7 @@
 
 A modern Neovim setup with Lua, featuring a dark theme, LSP support, fuzzy finding, and more.
 
-![Neovim Screenshot](https://user-images.githubusercontent.com/12345678/EXAMPLE.png)
+![Neovim Screenshot](images/sample-screen.png)
 
 ---
 
