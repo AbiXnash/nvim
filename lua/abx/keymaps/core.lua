@@ -32,9 +32,9 @@ imap("kj", "<Esc>", { desc = "Exit insert mode (alt)" })
 vmap("<C-c>", '"+y', { desc = "Copy to system clipboard" })
 
 -- =============================================================================
--- File Explorer (NETRW)
+-- File Explorer (oil.nvim)
 -- =============================================================================
-nmap("<leader>e", "<cmd>Explore<CR>", { desc = "File tree" })
+nmap("<leader>e", "<cmd>Oil<CR>", { desc = "File explorer (Oil)" })
 
 -- =============================================================================
 -- Git Integration

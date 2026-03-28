@@ -2,10 +2,10 @@
 return {
     -- Comments
     { import = "abx.plugins.tools.comments" },
-    
+
     -- Surround
     { import = "abx.plugins.tools.surround" },
-    
+
     -- Fuzzy finder (telescope)
     { import = "abx.plugins.tools.telescope" },
 
@@ -41,4 +41,7 @@ return {
     --
     -- FZF Lua
     { import = "abx.plugins.tools.fzf-lua" },
+
+    -- XXX: FOR KOTLIN
+    { import = "abx.plugins.tools.oil" },
 }

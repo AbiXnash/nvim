@@ -1,0 +1,2 @@
+WRN 2026-02-18T13:15:48.297 ?.3811     server_start:199: Failed to start server: operation not permitted: /var/folders/dn/8k4bfzwn4n1175kp3_h754sm0000gn/T/nvim.abx/l9xtzu/nvim.3811.0
+WRN 2026-02-18T13:15:48.371 ?.3811     server_start:199: Failed to start server: operation not permitted: /var/folders/dn/8k4bfzwn4n1175kp3_h754sm0000gn/T/nvim.abx/l9xtzu/fzf-lua.1771400748.3811.1
