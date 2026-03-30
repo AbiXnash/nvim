@@ -17,3 +17,17 @@ vim.keymap.set(
     end,
     { silent = true, buffer = bufnr }
 )
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    buffer = bufnr,
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client and client.name == "rust-analyzer" then
+            pcall(require, "virtualtypes")
+            local ok, vt = pcall(require, "virtualtypes")
+            if ok and vt and vt.on_attach then
+                vt.on_attach(client, bufnr)
+            end
+        end
+    end,
+})

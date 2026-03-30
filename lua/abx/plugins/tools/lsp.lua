@@ -41,6 +41,12 @@ return {
 		end
 	},
 
+	-- VIRTUAL TYPES (shows type annotations as virtual text)
+	{
+		'jubnzv/virtual-types.nvim',
+		ft = { 'rust', 'ocaml' },
+	},
+
 	-- JAVA
 	{
 		'nvim-java/nvim-java',
