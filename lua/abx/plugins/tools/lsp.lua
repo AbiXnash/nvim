@@ -7,7 +7,6 @@ local enabled_servers = {
 	"lua_ls",
 	"gopls",
 	"vtsls",
-	"rust_analyzer"
 }
 
 return {
@@ -30,8 +29,16 @@ return {
 	-- RUST
 	{
 		'mrcjkb/rustaceanvim',
-		version = '^7', -- Recommended
-		lazy = false, -- This plugin is already lazy
+		version = '^8',
+		lazy = false,
+		init = function()
+			vim.g.rustaceanvim = {
+				inlay_hints = {
+					parameter_hints = { show = true },
+					other_hints = { show = true },
+				}
+			}
+		end
 	},
 
 	-- JAVA
