@@ -65,7 +65,7 @@ return {
                                 info = "●",
                                 hint = "●",
                             },
-                            colored = false,
+                            colored = true,
                             update_in_insert = false,
                         },
                         "filetype",
