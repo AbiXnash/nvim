@@ -1,6 +1,9 @@
--- LSP progress notifications - shows what LSP servers are doing
+-- =============================================================================
+-- Fidget LSP Notifications
+-- =============================================================================
+
 return {
     "j-hui/fidget.nvim",
-    version = "*", -- Use latest version
+    version = "*",
     opts = {},
 }

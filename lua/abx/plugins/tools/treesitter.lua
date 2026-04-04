@@ -1,8 +1,6 @@
 -- =============================================================================
 -- Treesitter Configuration
 -- =============================================================================
--- Syntax highlighting and text objects
--- =============================================================================
 
 local function treesitter_setup()
     local treesitter = require("nvim-treesitter.configs")
@@ -10,7 +8,6 @@ local function treesitter_setup()
     treesitter.setup({
         modules = {},
         ignore_install = {},
-
         sync_install = true,
         auto_install = true,
 

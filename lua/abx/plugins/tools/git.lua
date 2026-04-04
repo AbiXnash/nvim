@@ -1,5 +1,8 @@
+-- =============================================================================
+-- Git Configuration
+-- =============================================================================
+
 return {
-    -- Git signs and inline diffs
     {
         "lewis6991/gitsigns.nvim",
         config = function()
@@ -45,9 +48,6 @@ return {
         end,
     },
 
-    -- Git commands and operations
     { "tpope/vim-fugitive" },
-
-    -- Git diff viewer in tabs
     { "sindrets/diffview.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
 }

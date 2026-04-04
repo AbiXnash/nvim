@@ -11,8 +11,6 @@ local function vmap(lhs, rhs, opts)
     map("v", lhs, rhs, opts)
 end
 
--- =============================================================================
--- Line Movement (Visual Mode)
--- =============================================================================
+-- Line Movement
 vmap(",", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vmap(".", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })

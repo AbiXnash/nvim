@@ -1,3 +1,7 @@
+-- =============================================================================
+-- Colorscheme Configuration
+-- =============================================================================
+
 return {
     {
         "catppuccin/nvim",
@@ -133,8 +137,6 @@ return {
                 },
             })
 
-            -- vim.cmd.colorscheme "catppuccin"
-
             vim.api.nvim_create_autocmd("ColorScheme", {
                 pattern = "catppuccin",
                 callback = function()
@@ -150,34 +152,24 @@ return {
         config = function()
             local function apply_gruvbox_overrides()
                 local hl = vim.api.nvim_set_hl
-
-                -- make main UI transparent
                 hl(0, "Normal", { bg = "NONE" })
                 hl(0, "NormalFloat", { bg = "NONE" })
                 hl(0, "SignColumn", { bg = "NONE" })
                 hl(0, "EndOfBuffer", { bg = "NONE" })
-
-                -- STATUSLINE (this is the missing part)
                 hl(0, "StatusLine", { bg = "NONE" })
                 hl(0, "StatusLineNC", { bg = "NONE" })
                 hl(0, "WinBar", { bg = "NONE" })
                 hl(0, "WinBarNC", { bg = "NONE" })
-
-                -- tabline
                 hl(0, "TabLineFill", { bg = "NONE" })
-
-                -- popup menu / cmp / blink
                 hl(0, "Pmenu", { bg = "NONE" })
                 hl(0, "FloatBorder", { bg = "NONE" })
-
-                -- blink.nvim specific
                 hl(0, "BlinkCmpMenu", { bg = "NONE" })
                 hl(0, "BlinkCmpDoc", { bg = "NONE" })
                 hl(0, "BlinkCmpSignatureHelp", { bg = "NONE" })
             end
 
             require("gruvbox").setup({
-                terminal_colors = false, -- add neovim terminal colors
+                terminal_colors = false,
                 undercurl = false,
                 bold = false,
                 italic = {
@@ -187,11 +179,9 @@ return {
                     operators = false,
                     folds = false,
                 },
-                contrast = "hard", -- can be "hard", "soft" or empty string
+                contrast = "hard",
                 transparent_mode = true,
             })
-            -- vim.cmd("colorscheme gruvbox")
-
             apply_gruvbox_overrides()
 
             vim.api.nvim_create_autocmd("ColorScheme", {
@@ -200,7 +190,6 @@ return {
             })
         end
     },
-
     {
         'sainnhe/gruvbox-material',
         lazy = false,
@@ -215,21 +204,15 @@ return {
 
             local function apply_gruvbox_material_overrides()
                 local hl = vim.api.nvim_set_hl
-
-                -- make main UI transparent
                 hl(0, "Normal", { bg = "NONE" })
                 hl(0, "NormalFloat", { bg = "NONE" })
                 hl(0, "SignColumn", { bg = "NONE" })
                 hl(0, "EndOfBuffer", { bg = "NONE" })
-
-                -- statusline / winbar / tabline
                 hl(0, "StatusLine", { bg = "NONE" })
                 hl(0, "StatusLineNC", { bg = "NONE" })
                 hl(0, "WinBar", { bg = "NONE" })
                 hl(0, "WinBarNC", { bg = "NONE" })
                 hl(0, "TabLineFill", { bg = "NONE" })
-
-                -- popup menu / cmp / blink
                 hl(0, "Pmenu", { bg = "NONE" })
                 hl(0, "FloatBorder", { bg = "NONE" })
                 hl(0, "BlinkCmpMenu", { bg = "NONE" })
@@ -248,7 +231,6 @@ return {
     },
     {
         "ramojus/mellifluous.nvim",
-        -- version = "v0.*", -- uncomment for stable config (some features might be missed if/when v1 comes out)
         config = function()
             require("mellifluous").setup({
                 transparent_background = {
@@ -260,7 +242,6 @@ return {
                     status_line = true,
                 },
             })
-            -- vim.cmd("colorscheme mellifluous")
         end,
     }
 }
