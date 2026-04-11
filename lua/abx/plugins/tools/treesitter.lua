@@ -8,6 +8,7 @@ local function treesitter_setup()
     treesitter.setup({
         modules = {},
         ignore_install = {},
+        ensure_installed = {},
         sync_install = true,
         auto_install = true,
 
@@ -47,6 +48,7 @@ end
 return {
     "nvim-treesitter/nvim-treesitter",
     branch = "master",
+    lazy = true,
     build = ":TSUpdate",
     config = treesitter_setup,
 }
