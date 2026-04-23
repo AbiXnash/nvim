@@ -1,4 +1,5 @@
 vim.g.have_nerd_font = true
+
 vim.opt.guicursor = ""
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -31,4 +32,20 @@ vim.opt.hidden = true
 vim.opt.history = 1000
 vim.opt.termguicolors = true
 vim.opt.list = false
+
+vim.env.ZIG_LOG_LEVEL = "warn"
+vim.env.ZLS_ENABLE_INLAY_HINTS = "true"
+
 vim.lsp.handlers["textDocument/documentHighlight"] = function() end
+
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+
+vim.api.nvim_create_autocmd({ "BufRead" }, {
+    pattern = { "*.tmpl", "*.gotmpl" },
+    callback = function(args)
+        vim.bo[args.buf].filetype = "gotmpl"
+    end,
+})

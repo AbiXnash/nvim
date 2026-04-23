@@ -18,6 +18,19 @@ return {
         },
         config = function()
             vim.lsp.enable(enabled_servers)
+
+            local lsp_root = vim.fn.stdpath("config")
+            vim.lsp.config.zls = dofile(lsp_root .. "/lsp/zls.lua")
+
+            vim.api.nvim_create_autocmd({ "LspAttach", "BufReadPost" }, {
+                pattern = { "*.zig", "*.zir", "*.zon" },
+                callback = function(args)
+                    local clients = vim.lsp.get_clients({ bufnr = args.buf, name = "zls" })
+                    if #clients == 0 then
+                        vim.lsp.start(vim.lsp.config.zls, { bufnr = args.buf })
+                    end
+                end,
+            })
         end
     },
 
