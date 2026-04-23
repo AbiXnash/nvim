@@ -46,6 +46,7 @@ return {
                     "shellcheck",
                     "shfmt",
                     "lemminx",
+                    "zls",
                 },
             })
         end,

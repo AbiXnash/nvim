@@ -6,6 +6,7 @@ local enabled_servers = {
     "lua_ls",
     "gopls",
     "vtsls",
+    "zls",
 }
 
 return {
