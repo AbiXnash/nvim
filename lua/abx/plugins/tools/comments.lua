@@ -1,6 +1,5 @@
 return {
 	"tpope/vim-sleuth",
-	"jinh0/eyeliner.nvim",
 	{ "folke/todo-comments.nvim", opts = {} },
 	{
 		"numToStr/Comment.nvim",

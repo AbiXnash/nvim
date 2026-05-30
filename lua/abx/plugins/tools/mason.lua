@@ -47,6 +47,8 @@ return {
                     "shfmt",
                     "lemminx",
                     "zls",
+                    "gradle-language-server",
+                    "groovy-language-server",
                 },
             })
         end,

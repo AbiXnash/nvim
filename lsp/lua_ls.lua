@@ -5,13 +5,14 @@ return {
                 version = "LuaJIT",
             },
             diagnostics = {
-                globals = {
-                    "vim",
-                },
+                globals = { "vim", "love" },
             },
             workspace = {
                 checkThirdParty = false,
-                library = vim.api.nvim_get_runtime_file("", true),
+                library = {
+                    vim.api.nvim_get_runtime_file("", true),
+                    vim.fn.expand("~/love2d-types/library"),
+                },
             },
             telemetry = {
                 enable = false,
@@ -21,6 +22,8 @@ return {
             },
             format = {
                 enable = true,
+                indentStyle = "space",
+                indentSize = "4",
             },
         },
     },

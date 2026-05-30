@@ -7,6 +7,8 @@ local enabled_servers = {
     "gopls",
     "vtsls",
     "zls",
+    "gradle_ls",
+    "groovyls",
 }
 
 return {
@@ -48,6 +50,32 @@ return {
         end
     },
 
+    {
+        "akinsho/flutter-tools.nvim",
+        lazy = false,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "neovim/nvim-lspconfig",
+        },
+        config = function()
+            require("flutter-tools").setup {
+                decorations = {
+                    statusline = true,
+                },
+                lsp = {
+                    settings = {
+                        showTodos = true,
+                        renameFilesWithClasses = true,
+                    },
+                },
+                widget_guides = { enabled = true },
+                closing_tags = { highlight = "Identifier" },
+                dev_log = {
+                    enabled = true,
+                },
+            }
+        end,
+    },
     {
         'nvim-java/nvim-java',
         config = function()

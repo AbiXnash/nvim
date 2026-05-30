@@ -5,10 +5,29 @@
 local function treesitter_setup()
     local treesitter = require("nvim-treesitter.configs")
 
+    vim.treesitter.query.set("vim", "injections", "")
+
     treesitter.setup({
         modules = {},
-        ignore_install = {},
-        ensure_installed = {},
+        ignore_install = { "vim" },
+        ensure_installed = {
+            "lua",
+            "go",
+            "typescript",
+            "javascript",
+            "python",
+            "rust",
+            "json",
+            "html",
+            "css",
+            "markdown",
+            "tsx",
+            "zig",
+            "kotlin",
+            "java",
+            "groovy",
+            "dart",
+        },
         sync_install = true,
         auto_install = true,
 

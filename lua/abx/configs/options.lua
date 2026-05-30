@@ -1,3 +1,5 @@
+vim.env.PATH = "/opt/homebrew/bin:" .. vim.env.PATH
+
 vim.g.have_nerd_font = true
 
 vim.opt.guicursor = ""

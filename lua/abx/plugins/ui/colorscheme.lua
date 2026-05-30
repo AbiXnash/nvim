@@ -132,11 +132,12 @@ return {
                         indentscope_color = "",
                     },
                     blink_cmp = {
-                        style = "none",
+                        style = "solid",
                     },
                 },
             })
 
+            -- vim.cmd.colorscheme('catppuccin')
             vim.api.nvim_create_autocmd("ColorScheme", {
                 pattern = "catppuccin",
                 callback = function()
@@ -145,50 +146,6 @@ return {
                 end,
             })
         end,
-    },
-    {
-        "ellisonleao/gruvbox.nvim",
-        priority = 99999,
-        config = function()
-            local function apply_gruvbox_overrides()
-                local hl = vim.api.nvim_set_hl
-                hl(0, "Normal", { bg = "NONE" })
-                hl(0, "NormalFloat", { bg = "NONE" })
-                hl(0, "SignColumn", { bg = "NONE" })
-                hl(0, "EndOfBuffer", { bg = "NONE" })
-                hl(0, "StatusLine", { bg = "NONE" })
-                hl(0, "StatusLineNC", { bg = "NONE" })
-                hl(0, "WinBar", { bg = "NONE" })
-                hl(0, "WinBarNC", { bg = "NONE" })
-                hl(0, "TabLineFill", { bg = "NONE" })
-                hl(0, "Pmenu", { bg = "NONE" })
-                hl(0, "FloatBorder", { bg = "NONE" })
-                hl(0, "BlinkCmpMenu", { bg = "NONE" })
-                hl(0, "BlinkCmpDoc", { bg = "NONE" })
-                hl(0, "BlinkCmpSignatureHelp", { bg = "NONE" })
-            end
-
-            require("gruvbox").setup({
-                terminal_colors = false,
-                undercurl = false,
-                bold = false,
-                italic = {
-                    strings = false,
-                    emphasis = true,
-                    comments = true,
-                    operators = false,
-                    folds = false,
-                },
-                contrast = "hard",
-                transparent_mode = true,
-            })
-            apply_gruvbox_overrides()
-
-            vim.api.nvim_create_autocmd("ColorScheme", {
-                pattern = "gruvbox",
-                callback = apply_gruvbox_overrides,
-            })
-        end
     },
     {
         'sainnhe/gruvbox-material',
@@ -229,19 +186,4 @@ return {
             })
         end
     },
-    {
-        "ramojus/mellifluous.nvim",
-        config = function()
-            require("mellifluous").setup({
-                transparent_background = {
-                    enabled = true,
-                    floating_windows = true,
-                    telescope = true,
-                    file_tree = true,
-                    cursor_line = true,
-                    status_line = true,
-                },
-            })
-        end,
-    }
 }
