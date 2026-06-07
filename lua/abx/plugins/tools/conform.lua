@@ -7,9 +7,9 @@ return {
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
     opts = {
-        -- Format on save, but respect global/buffer toggle
+        -- Format on save, but respect buffer-local toggle
         format_on_save = function(bufnr)
-            if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+            if vim.b[bufnr].disable_autoformat then
                 return
             end
             return { timeout_ms = 500, lsp_fallback = true }
@@ -41,14 +41,6 @@ return {
             end,
             mode = { "n", "v" },
             desc = "Format (conform)",
-        },
-        {
-            "<leader>tf",
-            function()
-                vim.g.disable_autoformat = not vim.g.disable_autoformat
-                vim.notify("Autoformat " .. (vim.g.disable_autoformat and "disabled" or "enabled"))
-            end,
-            desc = "Toggle autoformat (global)",
         },
         {
             "<leader>tF",

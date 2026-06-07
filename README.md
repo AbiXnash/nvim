@@ -33,7 +33,6 @@ A modern Neovim setup with Lua, featuring a dark theme, LSP support, fuzzy findi
 | `<leader>e` | File explorer (Oil) |
 | `<leader>g` | Git status (Fugitive) |
 | `<leader>cf` | Format buffer (conform) |
-| `<leader>tf` | Toggle autoformat (global) |
 | `<leader>tF` | Toggle autoformat (buffer) |
 
 ### Telescope (Fuzzy Finder)
