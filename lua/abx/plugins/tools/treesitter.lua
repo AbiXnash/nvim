@@ -5,9 +5,14 @@
 local function treesitter_setup()
     local treesitter = require("nvim-treesitter.configs")
 
-    -- This hack disables vim-language injections globally to avoid certain
-    -- parser errors in .vim files / help. Wrapped in pcall for safety.
-    pcall(vim.treesitter.query.set, "vim", "injections", "")
+    -- Disable problematic vim-language injections (only affects vim/help buffers).
+    -- Using FileType autocmd + pcall to avoid global side effects at startup.
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "vim", "help" },
+        callback = function()
+            pcall(vim.treesitter.query.set, "vim", "injections", "")
+        end,
+    })
 
     treesitter.setup({
         modules = {},
