@@ -37,7 +37,25 @@ return {
         {
             "<leader>cf",
             function()
-                require("conform").format({ async = true, lsp_fallback = true })
+                local conform = require("conform")
+                conform.format({
+                    async = true,
+                    lsp_fallback = true,
+                }, function(err, did_edit)
+                    if err then
+                        vim.notify("Format error: " .. err, vim.log.levels.ERROR)
+                    elseif did_edit then
+                        local formatters = conform.list_formatters(0)
+                        local names = {}
+                        for _, f in ipairs(formatters) do
+                            if f.available then
+                                table.insert(names, f.name)
+                            end
+                        end
+                        local msg = #names > 0 and table.concat(names, ", ") or "LSP"
+                        vim.notify("Formatted with: " .. msg)
+                    end
+                end)
             end,
             mode = { "n", "v" },
             desc = "Format (conform)",

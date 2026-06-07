@@ -1,6 +1,6 @@
 # Neovim Configuration
 
-A modern Neovim setup with Lua, featuring a dark theme, LSP support, fuzzy finding, and more.
+A modern Neovim setup with Lua, featuring a dark theme, LSP + conform formatting, Telescope, and more.
 
 ![Neovim Screenshot](images/sample-screen.png)
 
@@ -18,6 +18,7 @@ A modern Neovim setup with Lua, featuring a dark theme, LSP support, fuzzy findi
 | Git | Fugitive, Diffview, Gitsigns |
 | Navigation | Harpoon2 |
 | Statusline | Lualine |
+| Surround | mini.surround |
 
 ---
 

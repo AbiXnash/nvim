@@ -2,23 +2,12 @@
 -- LSP Server Configuration
 -- =============================================================================
 
-local border = {
-    { "┌", "FloatBorder" },
-    { "─", "FloatBorder" },
-    { "┐", "FloatBorder" },
-    { "│", "FloatBorder" },
-    { "┘", "FloatBorder" },
-    { "─", "FloatBorder" },
-    { "└", "FloatBorder" },
-    { "│", "FloatBorder" },
-}
-
 vim.diagnostic.config({
     underline = true,
     update_in_insert = false,
     severity_sort = true,
     float = {
-        border = border,
+        border = "rounded",
         source = true,
     },
     signs = {
@@ -38,7 +27,7 @@ vim.diagnostic.config({
 -- Global diagnostic keymaps (work on any buffer)
 vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "Show buffer diagnostics" })
 vim.keymap.set("n", "<leader>d", function()
-    vim.diagnostic.open_float({ border = border })
+    vim.diagnostic.open_float({ border = "rounded" })
 end, { desc = "Show line diagnostics" })
 vim.keymap.set("n", "[d", function()
     vim.diagnostic.jump({ count = -1, float = true })
@@ -64,7 +53,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             {
                 "K",
                 function()
-                    vim.lsp.buf.hover({ border = border })
+                    vim.lsp.buf.hover({ border = "rounded" })
                 end,
                 "Show documentation",
             },
