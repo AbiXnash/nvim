@@ -40,6 +40,7 @@ vim.opt.history = 1000
 vim.opt.termguicolors = true
 vim.opt.list = false
 
+-- Disable document highlight (we don't use it)
 vim.lsp.handlers["textDocument/documentHighlight"] = function() end
 
 vim.g.loaded_node_provider = 0

@@ -18,7 +18,7 @@ vim.diagnostic.config({
     update_in_insert = false,
     severity_sort = true,
     float = {
-        border = "rounded",
+        border = border,
         source = true,
     },
     signs = {
@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             {
                 "<leader>d",
                 function()
-                    vim.diagnostic.open_float({ border = "rounded" })
+                    vim.diagnostic.open_float({ border = border })
                 end,
                 "Show line diagnostics",
             },
