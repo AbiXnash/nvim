@@ -29,7 +29,7 @@ A modern Neovim setup with Lua, featuring a dark theme, LSP support, fuzzy findi
 | `Esc` | Clear search highlight |
 | `jk` / `kj` | Exit insert mode |
 | `<C-c>` | Copy to system clipboard (visual) |
-| `<leader>e` | File explorer (netrw) |
+| `<leader>e` | File explorer (Oil) |
 | `<leader>g` | Git status (Fugitive) |
 
 ### Telescope (Fuzzy Finder)

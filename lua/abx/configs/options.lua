@@ -1,4 +1,6 @@
-vim.env.PATH = "/opt/homebrew/bin:" .. vim.env.PATH
+if vim.uv.os_uname().sysname == "Darwin" then
+    vim.env.PATH = "/opt/homebrew/bin:" .. vim.env.PATH
+end
 
 vim.g.have_nerd_font = true
 
@@ -26,8 +28,6 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.softtabstop = 4
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
 vim.opt.mouse = ""
 vim.opt.clipboard = ""
 vim.opt.hidden = true
