@@ -35,8 +35,20 @@ vim.diagnostic.config({
     },
 })
 
--- Set LSP-related keymaps only on buffers that actually have an LSP attached.
--- This is cleaner than setting them globally at startup.
+-- Global diagnostic keymaps (work on any buffer)
+vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "Show buffer diagnostics" })
+vim.keymap.set("n", "<leader>d", function()
+    vim.diagnostic.open_float({ border = border })
+end, { desc = "Show line diagnostics" })
+vim.keymap.set("n", "[d", function()
+    vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to previous diagnostic" })
+vim.keymap.set("n", "]d", function()
+    vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to next diagnostic" })
+vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", { desc = "Restart LSP" })
+
+-- LSP-specific keymaps (only on buffers that have an LSP attached)
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspKeymaps", { clear = true }),
     callback = function(args)
@@ -49,28 +61,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
             { "gt", "<cmd>Telescope lsp_type_definitions<CR>", "Show LSP type definitions" },
             { "<leader>ca", "<cmd>Telescope lsp_code_actions<CR>", "Code actions" },
             { "<leader>rn", vim.lsp.buf.rename, "Smart rename" },
-            { "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", "Show buffer diagnostics" },
-            {
-                "<leader>d",
-                function()
-                    vim.diagnostic.open_float({ border = border })
-                end,
-                "Show line diagnostics",
-            },
-            {
-                "[d",
-                function()
-                    vim.diagnostic.jump({ count = -1, float = true })
-                end,
-                "Go to previous diagnostic",
-            },
-            {
-                "]d",
-                function()
-                    vim.diagnostic.jump({ count = 1, float = true })
-                end,
-                "Go to next diagnostic",
-            },
             {
                 "K",
                 function()
@@ -78,7 +68,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 end,
                 "Show documentation",
             },
-            { "<leader>rs", ":LspRestart<CR>", "Restart LSP" },
         }
 
         for _, mapping in ipairs(key_mappings) do

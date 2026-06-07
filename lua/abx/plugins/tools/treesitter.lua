@@ -45,8 +45,6 @@ local function treesitter_setup()
     end
 
     treesitter.setup({
-        modules = {},
-        ignore_install = { "vim" },
         ensure_installed = {
             "lua",
             "go",
