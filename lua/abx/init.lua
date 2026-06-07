@@ -16,7 +16,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 
 	if not ok then
 		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim\n",              "ErrorMsg" },
+			{ "Failed to clone lazy.nvim\n", "ErrorMsg" },
 			{ "Please check your internet connection.\n", "WarningMsg" },
 		}, true, {})
 		return
