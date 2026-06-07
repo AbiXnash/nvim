@@ -46,7 +46,6 @@ return {
                     "shellcheck",
                     "shfmt",
                     "lemminx",
-                    "zls",
                     "gradle-language-server",
                     "groovy-language-server",
                 },

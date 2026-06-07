@@ -35,9 +35,6 @@ vim.opt.history = 1000
 vim.opt.termguicolors = true
 vim.opt.list = false
 
-vim.env.ZIG_LOG_LEVEL = "warn"
-vim.env.ZLS_ENABLE_INLAY_HINTS = "true"
-
 vim.lsp.handlers["textDocument/documentHighlight"] = function() end
 
 vim.g.loaded_node_provider = 0

@@ -6,7 +6,6 @@ local enabled_servers = {
     "lua_ls",
     "gopls",
     "vtsls",
-    "zls",
     "gradle_ls",
     "groovyls",
 }
@@ -20,61 +19,7 @@ return {
         },
         config = function()
             vim.lsp.enable(enabled_servers)
-
-            local lsp_root = vim.fn.stdpath("config")
-            vim.lsp.config.zls = dofile(lsp_root .. "/lsp/zls.lua")
-
-            vim.api.nvim_create_autocmd({ "LspAttach", "BufReadPost" }, {
-                pattern = { "*.zig", "*.zir", "*.zon" },
-                callback = function(args)
-                    local clients = vim.lsp.get_clients({ bufnr = args.buf, name = "zls" })
-                    if #clients == 0 then
-                        vim.lsp.start(vim.lsp.config.zls, { bufnr = args.buf })
-                    end
-                end,
-            })
         end
-    },
-
-    {
-        'mrcjkb/rustaceanvim',
-        version = '^8',
-        lazy = false,
-        init = function()
-            vim.g.rustaceanvim = {
-                inlay_hints = {
-                    parameter_hints = { show = true },
-                    other_hints = { show = true },
-                }
-            }
-        end
-    },
-
-    {
-        "akinsho/flutter-tools.nvim",
-        lazy = false,
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "neovim/nvim-lspconfig",
-        },
-        config = function()
-            require("flutter-tools").setup {
-                decorations = {
-                    statusline = true,
-                },
-                lsp = {
-                    settings = {
-                        showTodos = true,
-                        renameFilesWithClasses = true,
-                    },
-                },
-                widget_guides = { enabled = true },
-                closing_tags = { highlight = "Identifier" },
-                dev_log = {
-                    enabled = true,
-                },
-            }
-        end,
     },
     {
         'nvim-java/nvim-java',
