@@ -8,6 +8,7 @@ return {
     { import = "abx.plugins.tools.telescope" },
     { import = "abx.plugins.tools.git" },
     { import = "abx.plugins.tools.lsp" },
+    { import = "abx.plugins.tools.conform" },
     { import = "abx.plugins.tools.mason" },
     { import = "abx.plugins.tools.treesitter" },
     { import = "abx.plugins.tools.trouble" },
