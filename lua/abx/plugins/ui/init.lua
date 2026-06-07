@@ -7,4 +7,5 @@ return {
     { import = "abx.plugins.ui.blink" },
     { import = "abx.plugins.ui.statusline" },
     { import = "abx.plugins.ui.fidget" },
+    { import = "abx.plugins.ui.dressing" },
 }

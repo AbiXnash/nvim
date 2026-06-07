@@ -6,9 +6,4 @@ return {
             -- Use default mappings (ys, ds, cs, etc.)
         },
     },
-    {
-        "echasnovski/mini.pairs",
-        version = "*",
-        opts = {},
-    },
 }
