@@ -12,7 +12,7 @@ return {
             vim.api.nvim_set_hl(0, "LualineDiagInfo", { fg = "#89dceb", bg = "NONE" })
             vim.api.nvim_set_hl(0, "LualineDiagHint", { fg = "#6c7086", bg = "NONE" })
 
-            local catppuccin = {
+            local lualine_theme = {
                 normal = {
                     a = { fg = "#cdd6f4", bg = "NONE", gui = "bold" },
                     b = { fg = "#a6adc8", bg = "NONE" },
@@ -31,12 +31,12 @@ return {
 
             require("lualine").setup({
                 options = {
-                    theme = catppuccin,
+                    theme = lualine_theme,
                     globalstatus = true,
                     component_separators = "",
                     section_separators = "",
                     disabled_filetypes = {
-                        statusline = { "NvimTree", "help", "qf", "Trouble", "lazy" },
+                        statusline = { "help", "qf", "Trouble", "lazy" },
                     },
                     always_divide_middle = false,
                 },

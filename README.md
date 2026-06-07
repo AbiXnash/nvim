@@ -10,7 +10,7 @@ A modern Neovim setup with Lua, featuring a dark theme, LSP + conform formatting
 
 | Feature | Plugin/Feature |
 |---------|---------------|
-| Theme | Catppuccin Mocha, Gruvbox, Gruvbox Material, Mellifluous |
+| Theme | Gruvbox Material |
 | Completion | Blink.cmp (modern cmp replacement) |
 | LSP | nvim-lspconfig + Mason |
 | Formatting | conform.nvim (with lsp fallback) |
