@@ -31,6 +31,27 @@ return {
             -- other JVM: sql, etc. via LSP
             -- Add more as needed
         },
+
+        -- Override formatters to always use spaces (4 spaces) instead of tabs.
+        -- This ensures "always spaces, no tabs" across all languages.
+        formatters = {
+            shfmt = {
+                prepend_args = { "-i", "4", "-ci" }, -- 4 spaces, indent switch cases
+            },
+            stylua = {
+                prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" },
+            },
+            gofumpt = {
+                -- gofumpt (and gofmt) produce tabs by default.
+                -- Pipe through `expand` to convert leading tabs to 4 spaces.
+                command = "sh",
+                args = { "-c", "gofumpt | expand -t 4" },
+                stdin = true,
+            },
+            ["google-java-format"] = {
+                prepend_args = { "--aosp" }, -- AOSP style uses 4 spaces
+            },
+        },
     },
 
     keys = {
