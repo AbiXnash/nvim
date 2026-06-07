@@ -112,26 +112,6 @@ local function treesitter_setup()
 
         additional_vim_regex_highlighting = false,
     })
-
-    -- Extra defense: explicitly stop + clear any treesitter highlights on
-    -- Telescope's internal buffers. The monkey-patch guard above (wrapping
-    -- vim.treesitter.start) should prevent most attachments, but this catches
-    -- cases where attachment happened during buffer creation or from other code.
-    vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter", "BufEnter" }, {
-        pattern = { "TelescopePrompt", "TelescopeResults", "TelescopePreview" },
-        callback = function(ev)
-            vim.schedule(function()
-                if vim.api.nvim_buf_is_valid(ev.buf) then
-                    vim.treesitter.stop(ev.buf)
-                    -- Clear the specific highlighter namespace if it exists
-                    local ns = vim.api.nvim_get_namespaces()["nvim.treesitter.highlighter"]
-                    if ns then
-                        vim.api.nvim_buf_clear_namespace(ev.buf, ns, 0, -1)
-                    end
-                end
-            end)
-        end,
-    })
 end
 
 return {

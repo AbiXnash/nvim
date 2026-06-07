@@ -26,7 +26,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("abx.keymaps")
-require("abx.configs")
+require("abx.configs.options")
+require("abx.configs.lsp-servers")
 
 require("lazy").setup({
 	spec = {
