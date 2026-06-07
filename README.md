@@ -13,7 +13,7 @@ A modern Neovim setup with Lua, featuring a dark theme, LSP support, fuzzy findi
 | Theme | Catppuccin Mocha, Gruvbox, Gruvbox Material, Mellifluous |
 | Completion | Blink.cmp (modern cmp replacement) |
 | LSP | nvim-lspconfig + Mason |
-| Fuzzy Finder | Telescope + FZF-Lua |
+| Fuzzy Finder | Telescope |
 | Git | Fugitive, Diffview, Gitsigns |
 | Navigation | Harpoon2 |
 | Statusline | Lualine |
@@ -86,7 +86,6 @@ A modern Neovim setup with Lua, featuring a dark theme, LSP support, fuzzy findi
 - `lua_ls` - Lua
 - `gopls` - Go
 - `vtsls` - TypeScript/JavaScript
-- `rust_analyzer` - Rust
 
 ---
 

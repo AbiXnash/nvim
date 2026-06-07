@@ -15,5 +15,4 @@ return {
     { import = "abx.plugins.tools.inline-diagnostics" },
     { import = "abx.plugins.tools.oil" },
     { import = "abx.plugins.tools.harpoon" },
-    { import = "abx.plugins.tools.fzf-lua" },
 }
