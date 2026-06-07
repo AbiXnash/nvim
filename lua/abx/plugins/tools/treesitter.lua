@@ -114,7 +114,7 @@ local function treesitter_setup()
     })
 
     -- Extra defense: explicitly stop + clear any treesitter highlights on
-    -- Telescope's internal buffers. The early guard in autocmd.lua (wrapping
+    -- Telescope's internal buffers. The monkey-patch guard above (wrapping
     -- vim.treesitter.start) should prevent most attachments, but this catches
     -- cases where attachment happened during buffer creation or from other code.
     vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter", "BufEnter" }, {
