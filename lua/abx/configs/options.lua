@@ -1,5 +1,10 @@
-if vim.uv.os_uname().sysname == "Darwin" then
-    vim.env.PATH = "/opt/homebrew/bin:" .. vim.env.PATH
+-- Prepend Homebrew bin to PATH (supports both Apple Silicon and Intel Macs)
+for _, prefix in ipairs({ "/opt/homebrew", "/usr/local" }) do
+    local bin = prefix .. "/bin"
+    if vim.fn.isdirectory(bin) == 1 then
+        vim.env.PATH = bin .. ":" .. vim.env.PATH
+        break
+    end
 end
 
 vim.g.have_nerd_font = true
