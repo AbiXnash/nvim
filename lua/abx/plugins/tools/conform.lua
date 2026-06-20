@@ -22,6 +22,7 @@ return {
             typescript = { "prettierd" },
             javascriptreact = { "prettierd" },
             typescriptreact = { "prettierd" },
+            svelte = { "prettierd" },
             python = { "black" },
             sh = { "shfmt" },
             bash = { "shfmt" },

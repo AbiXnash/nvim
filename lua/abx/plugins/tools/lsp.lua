@@ -6,6 +6,12 @@ local enabled_servers = {
     "lua_ls",
     "gopls",
     "vtsls",
+    "svelte",
+    "eslint",
+    "tailwindcss",
+    "emmet_ls",
+    "html",
+    "cssls",
     "gradle_ls",
     "groovyls",
 }

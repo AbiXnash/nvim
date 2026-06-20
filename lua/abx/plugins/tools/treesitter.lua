@@ -56,6 +56,7 @@ local function treesitter_setup()
             "css",
             "markdown",
             "tsx",
+            "svelte",
             "kotlin",
             "java",
             "groovy",
