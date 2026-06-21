@@ -12,6 +12,7 @@ local enabled_servers = {
     "emmet_ls",
     "html",
     "cssls",
+    "basedpyright",
     "gradle_ls",
     "groovyls",
 }
@@ -24,6 +25,11 @@ return {
             "williamboman/mason-lspconfig.nvim",
         },
         config = function()
+            local function load_config(name)
+                return dofile(vim.fn.stdpath("config") .. "/lsp/" .. name .. ".lua")
+            end
+            vim.lsp.config.vtsls = load_config("vtsls")
+            vim.lsp.config.svelte = load_config("svelte")
             vim.lsp.enable(enabled_servers)
         end
     },
