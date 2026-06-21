@@ -42,13 +42,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspKeymaps", { clear = true }),
     callback = function(args)
         local bufnr = args.buf
+        local function try_telescope(name)
+            return function()
+                local ok, builtin = pcall(require, "telescope.builtin")
+                if ok and builtin[name] then
+                    builtin[name]()
+                end
+            end
+        end
+
         local key_mappings = {
-            { "gr", "<cmd>Telescope lsp_references<CR>", "Show LSP references" },
-            { "gD", "<cmd>Telescope lsp_declarations<CR>", "Go to declaration" },
-            { "gd", "<cmd>Telescope lsp_definitions<CR>", "Show LSP definitions" },
-            { "gi", "<cmd>Telescope lsp_implementations<CR>", "Show LSP implementations" },
-            { "gt", "<cmd>Telescope lsp_type_definitions<CR>", "Show LSP type definitions" },
-            { "<leader>ca", "<cmd>Telescope lsp_code_actions<CR>", "Code actions" },
+            { "gr", try_telescope("lsp_references"), "Show LSP references" },
+            { "gD", vim.lsp.buf.declaration, "Go to declaration" },
+            { "gd", vim.lsp.buf.definition, "Go to definition" },
+            { "gi", try_telescope("lsp_implementations"), "Show LSP implementations" },
+            { "gt", try_telescope("lsp_type_definitions"), "Show LSP type definitions" },
+            { "<leader>ca", vim.lsp.buf.code_action, "Code actions" },
             { "<leader>rn", vim.lsp.buf.rename, "Smart rename" },
             {
                 "K",
