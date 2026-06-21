@@ -7,3 +7,5 @@
 require("abx.keymaps.core")
 require("abx.keymaps.motions")
 require("abx.keymaps.editor")
+require("abx.keymaps.python")
+require("abx.keymaps.tmux")
