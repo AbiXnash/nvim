@@ -26,10 +26,6 @@ return {
 		".git",
 	}),
 	on_attach = function(client, bufnr)
-		if vim.lsp.inlay_hint and client.server_capabilities.inlayHintProvider then
-			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-		end
-
 		local augroup = vim.api.nvim_create_augroup("lspconfig.svelte", { clear = false })
 		vim.api.nvim_create_autocmd("BufWritePost", {
 			group = augroup,

@@ -51,10 +51,6 @@ return {
 
         python.apply_to_basedpyright(client, bufnr)
 
-        if vim.lsp.inlay_hint then
-            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-        end
-
         vim.api.nvim_buf_create_user_command(bufnr, "LspPyrightOrganizeImports", function()
             client.request("workspace/executeCommand", {
                 command = "basedpyright.organizeimports",
