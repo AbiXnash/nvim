@@ -1,4 +1,4 @@
-local script = vim.fn.expand("~/dev/scripts/tmux-sessionizer.sh")
+local script = vim.fn.expand("~/dev/touch-it-and-your-shell-dies/scripts/tmux-sessionizer.sh")
 
 local function sessionizer()
     if vim.fn.executable("tmux") == 0 then
