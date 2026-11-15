@@ -7,25 +7,25 @@ return {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
-            vim.api.nvim_set_hl(0, "LualineDiagError", { fg = "#ea6962", bg = "NONE" })
-            vim.api.nvim_set_hl(0, "LualineDiagWarn", { fg = "#d8a657", bg = "NONE" })
+            vim.api.nvim_set_hl(0, "LualineDiagError", { fg = "#d16d92", bg = "NONE" })
+            vim.api.nvim_set_hl(0, "LualineDiagWarn", { fg = "#c4a7e7", bg = "NONE" })
             vim.api.nvim_set_hl(0, "LualineDiagInfo", { fg = "#7daea3", bg = "NONE" })
-            vim.api.nvim_set_hl(0, "LualineDiagHint", { fg = "#a89984", bg = "NONE" })
+            vim.api.nvim_set_hl(0, "LualineDiagHint", { fg = "#908caa", bg = "NONE" })
 
             local lualine_theme = {
                 normal = {
-                    a = { fg = "#d4be98", bg = "NONE", gui = "bold" },
-                    b = { fg = "#a89984", bg = "NONE" },
-                    c = { fg = "#a89984", bg = "NONE" },
+                    a = { fg = "#ebbcba", bg = "NONE", gui = "bold" },
+                    b = { fg = "#908caa", bg = "NONE" },
+                    c = { fg = "#908caa", bg = "NONE" },
                 },
-                insert = { a = { fg = "#a9b665", bg = "NONE", gui = "bold" } },
-                visual = { a = { fg = "#d8a657", bg = "NONE", gui = "bold" } },
-                replace = { a = { fg = "#ea6962", bg = "NONE", gui = "bold" } },
-                command = { a = { fg = "#e78a4e", bg = "NONE", gui = "bold" } },
+                insert = { a = { fg = "#9ccfd8", bg = "NONE", gui = "bold" } },
+                visual = { a = { fg = "#c4a7e7", bg = "NONE", gui = "bold" } },
+                replace = { a = { fg = "#d16d92", bg = "NONE", gui = "bold" } },
+                command = { a = { fg = "#ca9f7c", bg = "NONE", gui = "bold" } },
                 inactive = {
-                    a = { fg = "#7c6f64", bg = "NONE" },
-                    b = { fg = "#7c6f64", bg = "NONE" },
-                    c = { fg = "#7c6f64", bg = "NONE" },
+                    a = { fg = "#6e6a86", bg = "NONE" },
+                    b = { fg = "#6e6a86", bg = "NONE" },
+                    c = { fg = "#6e6a86", bg = "NONE" },
                 },
             }
 
