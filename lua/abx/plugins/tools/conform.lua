@@ -42,13 +42,8 @@ return {
             stylua = {
                 prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" },
             },
-            gofumpt = {
-                -- gofumpt (and gofmt) produce tabs by default.
-                -- Pipe through `expand` to convert leading tabs to 4 spaces.
-                command = "sh",
-                args = { "-c", "gofumpt | expand -t 4" },
-                stdin = true,
-            },
+            -- gofumpt is left as-is: Go's canonical format uses tabs, and piping
+            -- through `expand` also rewrote tabs inside string literals.
             ["google-java-format"] = {
                 prepend_args = { "--aosp" }, -- AOSP style uses 4 spaces
             },

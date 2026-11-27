@@ -16,15 +16,8 @@ return {
 			},
 		},
 	},
-	root_dir = vim.fs.root(0, {
-		"package.json",
-		"svelte.config.js",
-		"svelte.config.ts",
-		"svelte.config.mjs",
-		"svelte.config.cjs",
-		"tsconfig.json",
-		".git",
-	}),
+	-- No root_dir here: nvim-lspconfig's root_dir function resolves the project
+	-- per buffer. (A `vim.fs.root(0, ...)` value was computed once at startup.)
 	on_attach = function(client, bufnr)
 		local augroup = vim.api.nvim_create_augroup("lspconfig.svelte", { clear = false })
 		vim.api.nvim_create_autocmd("BufWritePost", {

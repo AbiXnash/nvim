@@ -14,35 +14,7 @@ local function treesitter_setup()
         end,
     })
 
-    -- Strongly guard vim.treesitter.start to prevent the core treesitter highlighter
-    -- decoration provider from attaching to buffers that commonly cause crashes
-    -- like: "attempt to call method 'range' (a nil value)" in languagetree/highlighter.
-    --
-    -- This is a frequent issue with Telescope (TelescopePrompt buffers), quickfix,
-    -- nofile/prompt buffers, especially on Neovim 0.11/0.12 nightlies.
-    if vim.treesitter and vim.treesitter.start then
-        local _ts_bad_filetypes = { "^Telescope" }
-        local _ts_bad_buftypes = { prompt = true, nofile = true, terminal = true, quickfix = true }
-
-        local _ts_orig_start = vim.treesitter.start
-        vim.treesitter.start = function(bufnr, lang)
-            bufnr = bufnr or vim.api.nvim_get_current_buf()
-            if not bufnr or not vim.api.nvim_buf_is_valid(bufnr) then
-                return
-            end
-            local ft = vim.bo[bufnr].filetype or ""
-            local bt = vim.bo[bufnr].buftype
-            for _, pat in ipairs(_ts_bad_filetypes) do
-                if ft:match(pat) then
-                    return
-                end
-            end
-            if _ts_bad_buftypes[bt] then
-                return
-            end
-            return _ts_orig_start(bufnr, lang)
-        end
-    end
+    -- vim.treesitter.start is guarded once, in abx/configs/treesitter-guard.lua.
 
     treesitter.setup({
         ensure_installed = {
@@ -98,30 +70,47 @@ local function treesitter_setup()
             disable = {},
         },
 
-        textobjects = {
-            select = {
-                enable = true,
-                lookahead = true,
-                keymaps = {
-                    ["af"] = "@function.outer",
-                    ["if"] = "@function.inner",
-                    ["ac"] = "@class.outer",
-                    ["ic"] = "@class.inner",
-                },
-            },
-        },
+        -- The textobjects module is not enabled here: its master-branch code
+        -- errors on Neovim 0.12. af/if/ac/ic come from mini.ai (see below).
 
         additional_vim_regex_highlighting = false,
     })
 end
 
 return {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "master",
-    -- Load early so the highlight disable logic and Telescope buffer protections
-    -- are active before Telescope (or other plugins) can trigger the highlighter
-    -- on special buffers.
-    lazy = false,
-    build = ":TSUpdate",
-    config = treesitter_setup,
+    {
+        "nvim-treesitter/nvim-treesitter",
+        branch = "master",
+        -- Load early so the highlight disable logic and Telescope buffer protections
+        -- are active before Telescope (or other plugins) can trigger the highlighter
+        -- on special buffers.
+        lazy = false,
+        build = ":TSUpdate",
+        config = treesitter_setup,
+    },
+
+    -- Function/class text objects: mini.ai runs the @function/@class queries
+    -- that nvim-treesitter-textobjects ships (installed only for those queries).
+    {
+        "echasnovski/mini.ai",
+        version = "*",
+        event = "VeryLazy",
+        dependencies = {
+            { "nvim-treesitter/nvim-treesitter-textobjects", branch = "master" },
+        },
+        config = function()
+            local ai = require("mini.ai")
+            -- use_nvim_treesitter = false (also mini.ai's default): query with
+            -- Neovim's own API rather than nvim-treesitter master's helpers.
+            local ts = function(a, i)
+                return ai.gen_spec.treesitter({ a = a, i = i }, { use_nvim_treesitter = false })
+            end
+            ai.setup({
+                custom_textobjects = {
+                    f = ts("@function.outer", "@function.inner"),
+                    c = ts("@class.outer", "@class.inner"),
+                },
+            })
+        end,
+    },
 }

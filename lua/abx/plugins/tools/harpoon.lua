@@ -32,11 +32,12 @@ return {
             harpoon:list():select(5)
         end)
 
-        vim.keymap.set("n", "<C-[>", function()
+        -- Not <C-[>: terminals send it as <Esc>, so it never reached Harpoon.
+        vim.keymap.set("n", "<C-p>", function()
             harpoon:list():prev()
-        end)
-        vim.keymap.set("n", "<C-]>", function()
+        end, { desc = "Harpoon: previous file" })
+        vim.keymap.set("n", "<C-n>", function()
             harpoon:list():next()
-        end)
+        end, { desc = "Harpoon: next file" })
     end,
 }

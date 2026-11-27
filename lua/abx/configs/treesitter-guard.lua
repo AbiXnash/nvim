@@ -2,8 +2,6 @@ local M = {}
 
 M.bad_filetype_patterns = {
     "^Telescope",
-    "^help",
-    "^markdown",
     "^qf",
     "^trouble",
     "^oil",

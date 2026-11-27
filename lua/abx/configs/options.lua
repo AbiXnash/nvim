@@ -57,11 +57,12 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
 
 -- Force spaces (no tabs) for all languages/filetypes.
 -- This overrides vim-sleuth, modelines, .editorconfig, etc.
--- Exception for Makefiles (which require literal tab characters in recipes).
+-- Exceptions: Makefiles (recipes need literal tabs) and Go (gofmt/gofumpt use tabs).
+local tab_filetypes = { make = true, makefile = true, go = true, gomod = true, gowork = true }
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "*",
     callback = function()
-        if vim.bo.filetype == "make" or vim.bo.filetype == "makefile" then
+        if tab_filetypes[vim.bo.filetype] then
             vim.opt_local.expandtab = false
         else
             vim.opt_local.expandtab = true
