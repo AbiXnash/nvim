@@ -1,5 +1,6 @@
 return {
-	"tpope/vim-sleuth",
+	-- No vim-sleuth: options.lua forces 4-space indentation on every FileType,
+	-- which always overrode whatever sleuth detected.
 	{ "folke/todo-comments.nvim", opts = {} },
 	{
 		"numToStr/Comment.nvim",

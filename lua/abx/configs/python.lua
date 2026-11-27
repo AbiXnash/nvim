@@ -35,6 +35,8 @@ function M.find_python(root, start_dir)
     return vim.fn.exepath("python3"), nil
 end
 
+--- Find the project's Python and, if it lives in a venv, activate that venv
+--- for Neovim's environment (VIRTUAL_ENV and PATH). Returns python, venv.
 function M.apply_venv(root, start_dir)
     local python, venv = M.find_python(root, start_dir)
     if venv then
@@ -44,25 +46,17 @@ function M.apply_venv(root, start_dir)
             vim.env.PATH = bin .. ":" .. vim.env.PATH
         end
     end
-    return python
+    return python, venv
 end
 
 function M.apply_to_basedpyright(client, bufnr)
     local filepath = vim.api.nvim_buf_get_name(bufnr)
     local start_dir = filepath ~= "" and vim.fs.dirname(filepath) or nil
     local root = vim.fs.root(bufnr, M.root_markers)
-    local python, venv = M.find_python(root, start_dir)
+    local python, venv = M.apply_venv(root, start_dir)
 
     if python == "" then
         return
-    end
-
-    if venv then
-        vim.env.VIRTUAL_ENV = venv
-        local bin = venv .. "/bin"
-        if not vim.env.PATH:find(bin, 1, true) then
-            vim.env.PATH = bin .. ":" .. vim.env.PATH
-        end
     end
 
     local python_settings = { pythonPath = python }

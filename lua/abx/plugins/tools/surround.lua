@@ -3,7 +3,7 @@ return {
         "echasnovski/mini.surround",
         version = "*",
         opts = {
-            -- Use default mappings (ys, ds, cs, etc.)
+            -- Default mappings: sa (add), sd (delete), sr (replace), sf/sF (find), sh (highlight)
         },
     },
 }

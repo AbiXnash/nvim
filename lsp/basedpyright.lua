@@ -52,7 +52,7 @@ return {
         python.apply_to_basedpyright(client, bufnr)
 
         vim.api.nvim_buf_create_user_command(bufnr, "LspPyrightOrganizeImports", function()
-            client.request("workspace/executeCommand", {
+            client:request("workspace/executeCommand", {
                 command = "basedpyright.organizeimports",
                 arguments = { vim.uri_from_bufnr(bufnr) },
             }, nil, bufnr)

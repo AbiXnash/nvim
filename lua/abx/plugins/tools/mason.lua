@@ -19,38 +19,38 @@ return {
         "WhoIsSethDaniel/mason-tool-installer",
         config = function()
             require("mason-tool-installer").setup({
+                -- Only tools this config actually runs: servers enabled in
+                -- plugins/tools/lsp.lua, formatters in conform.lua, and what
+                -- nvim-java / kotlin.nvim launch. Add linters here together with
+                -- something that runs them (e.g. nvim-lint).
                 ensure_installed = {
+                    -- Go
                     "gopls",
                     "gofumpt",
-                    "golangci-lint",
-                    "delve",
+                    -- Web
                     "vtsls",
                     "svelte-language-server",
-                    "prettierd",
-                    "eslint_d",
                     "eslint",
                     "html-lsp",
                     "css-lsp",
                     "emmet-ls",
                     "tailwindcss-language-server",
+                    "prettierd",
+                    -- Python
                     "basedpyright",
                     "black",
-                    "debugpy",
+                    -- Lua
                     "lua-language-server",
                     "stylua",
+                    -- Shell
+                    "shfmt",
+                    -- JVM
                     "jdtls",
                     "java-test",
                     "java-debug-adapter",
                     "google-java-format",
-                    "checkstyle",
-                    "kotlin-language-server",
+                    "kotlin-lsp",
                     "ktlint",
-                    "sqlls",
-                    "markdownlint",
-                    "marksman",
-                    "shellcheck",
-                    "shfmt",
-                    "lemminx",
                     "gradle-language-server",
                     "groovy-language-server",
                 },

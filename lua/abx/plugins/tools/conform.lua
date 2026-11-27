@@ -12,7 +12,7 @@ return {
             if vim.b[bufnr].disable_autoformat then
                 return
             end
-            return { timeout_ms = 500, lsp_fallback = true }
+            return { timeout_ms = 500, lsp_format = "fallback" }
         end,
 
         formatters_by_ft = {
@@ -57,7 +57,7 @@ return {
                 local conform = require("conform")
                 conform.format({
                     async = true,
-                    lsp_fallback = true,
+                    lsp_format = "fallback",
                 }, function(err, did_edit)
                     if err then
                         vim.notify("Format error: " .. err, vim.log.levels.ERROR)

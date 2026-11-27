@@ -20,16 +20,39 @@ local enabled_servers = {
 return {
     {
         "neovim/nvim-lspconfig",
-        dependencies = {
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
-        },
+        -- Mason first, so its bin directory is on PATH before servers start.
+        dependencies = { "mason-org/mason.nvim" },
         config = function()
-            local function load_config(name)
-                return dofile(vim.fn.stdpath("config") .. "/lsp/" .. name .. ".lua")
+            -- nvim-lspconfig's lsp/*.lua files come later on the runtimepath than
+            -- ours, so on a plain merge its hooks and values replace ours. Apply
+            -- every file in our lsp/ explicitly (explicit config wins), and keep
+            -- both sides' hooks: lspconfig's runs first, ours after it.
+            local hooks = { "on_attach", "on_init", "before_init" }
+            local config_lsp = vim.fn.stdpath("config") .. "/lsp"
+
+            for file, kind in vim.fs.dir(config_lsp) do
+                local server = kind == "file" and file:match("^(.+)%.lua$")
+                if server then
+                    local mine = dofile(config_lsp .. "/" .. file)
+                    local upstream
+                    for _, path in ipairs(vim.api.nvim_get_runtime_file("lsp/" .. file, true)) do
+                        if not vim.startswith(path, config_lsp) then
+                            upstream = dofile(path)
+                            break
+                        end
+                    end
+                    for _, hook in ipairs(hooks) do
+                        if mine[hook] and upstream and upstream[hook] then
+                            mine[hook] = vim.list_extend(
+                                vim.islist(upstream[hook]) and vim.list_slice(upstream[hook]) or { upstream[hook] },
+                                vim.islist(mine[hook]) and mine[hook] or { mine[hook] }
+                            )
+                        end
+                    end
+                    vim.lsp.config(server, mine)
+                end
             end
-            vim.lsp.config.vtsls = load_config("vtsls")
-            vim.lsp.config.svelte = load_config("svelte")
+
             vim.lsp.enable(enabled_servers)
         end
     },
@@ -46,7 +69,6 @@ return {
         ft = { "kotlin" },
         dependencies = {
             "mason.nvim",
-            "mason-lspconfig.nvim",
             "oil.nvim",
             "trouble.nvim",
         },

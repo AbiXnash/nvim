@@ -26,7 +26,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("abx.configs.treesitter-guard")
-require("abx.configs.svelte").setup_autocmds()
 require("abx.keymaps")
 require("abx.configs.options")
 require("abx.configs.inlay-hints").setup()
